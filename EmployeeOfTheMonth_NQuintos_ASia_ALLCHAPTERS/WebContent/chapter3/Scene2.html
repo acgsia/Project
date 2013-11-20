@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Link External CSS -->
+<link rel="stylesheet" type="text/css" href="./style_scenes.css">
+<meta charset="ISO-8859-1">
+<title>Employee of the Month</title>
+
+<!-- Script -->
+<script type="text/javascript">
+var vCanvas, vContext, vBackground01, vBackground02, vBackground03, vBackground04, vBackground05, vBackground06;
+var imgPosX = 0, imgPosY = 0; // image positions
+
+function loadScene() {
+	// alert("Test Function. OK.");
+	vCanvas = document.getElementById("sceneCanvas");
+	vContext = vCanvas.getContext("2d");
+	vBackground01 = document.getElementById("bg01");
+	vBackground02 = document.getElementById("bg02");
+	vBackground03 = document.getElementById("bg03");
+	vBackground04 = document.getElementById("bg04");
+	vBackground05 = document.getElementById("bg05");
+	vBackground06 = document.getElementById("bg06");
+	
+	// start loading image background
+	vContext.drawImage(vBackground01, 0, 0);
+	// call to animate the image
+	stop = setInterval("animate()", 1000);
+}
+
+var counter = 0, changePicCounter = 0;
+
+function animate() {
+	
+	if (counter >= 0 && counter <= 6) {
+		counter++;
+		changePicCounter++;
+		imgPosX = changePicCounter * 600;
+		// start loading image background 1
+		vContext.drawImage(vBackground01, imgPosX, 0, 600, 330, 0, 0, 600, 330);
+		if (counter == 6) {
+			changePicCounter = -1;
+		}
+	}
+	
+	if (counter >= 6 && counter <= 11) {
+		counter++;
+		changePicCounter++;
+		imgPosX = changePicCounter * 600;
+		// start loading image background 2
+		vContext.drawImage(vBackground02, imgPosX, 0, 600, 330, 0, 0, 600, 330);
+		if (counter == 11) {
+			changePicCounter = -1;
+		}
+	}
+	
+	if (counter >= 11 && counter <= 17) {
+		counter++;
+		changePicCounter++;
+		imgPosX = changePicCounter * 600;
+		// start loading image background 2
+		vContext.drawImage(vBackground03, imgPosX, 0, 600, 330, 0, 0, 600, 330);
+		if (counter == 17) {
+			changePicCounter = -1;
+		}
+	}
+	
+	if (counter >= 17 && counter <=23) {
+		counter++;
+		changePicCounter++;
+		imgPosX = changePicCounter * 600;
+		// start loading image background 2
+		vContext.drawImage(vBackground04, imgPosX, 0, 600, 330, 0, 0, 600, 330);
+		if (counter == 23) {
+			changePicCounter = -1;
+		}
+	}
+	
+	if (counter >= 23 && counter <=31) {
+		counter++;
+		changePicCounter++;
+		imgPosX = changePicCounter * 600;
+		// start loading image background 2
+		vContext.drawImage(vBackground05, imgPosX, 0, 600, 330, 0, 0, 600, 330);
+		if (counter == 31) {
+			changePicCounter = -1;
+		}
+	}
+	
+	if (counter >= 31 && counter <=36) {
+		counter++;
+		changePicCounter++;
+		imgPosX = changePicCounter * 600;
+		// start loading image background 2
+		vContext.drawImage(vBackground06, imgPosX, 0, 600, 330, 0, 0, 600, 330);
+		if (counter == 35) {
+			changePicCounter = -1;
+			counter = 0;
+		}
+	}
+}
+</script>
+
+</head>
+<body onload="loadScene()" background="../images/officebg.jpg">
+
+<h1>Employee of the Month</h1>
+<h2>Chapter 3 - Past connects Present</h2>
+<h3>Scene 02: Behind History</h3>
+
+<center>
+<canvas id="sceneCanvas" width="600" height="330" style="border-width: 8px; border-style: inset;">Canvas not supported!</canvas>
+<br>
+<div style="width: 550px; height: 200px; line-height: 3em; overflow: auto; padding: 5px; text-align: center;">
+<p>"It was the year 1994, when this is still a small company, when we had Eden. Eden was a big name in the company; he's the best employee at that time. He's intelligent, he's kind, and he's popular. Heck! He's always chosen as the employee of the month. But in a tragic accident, Eden died. Everyone was shocked, crying, and refusing to believe the sad news. It was the Developer's Department that was always working close with Eden so they have decided to carry on Eden's name even though that person is already dead. They put his name in the projects, in the documents as well as credits on a program like he was still alive and working for this company. Then the company grew, it became famous. But everybody... Everyone forgot about Eden. I guess Eden's spirit didn't like that. That was the beginning of the death of the employees. A chain of death. One by one the department's employees die. Death is instant and inevitable." Lucas continued his story "There is a sign when Eden's spirit is coming. When there will be again a series of deaths for the Developers Department." "What is it? Tell me!" speaks Daniel.</p> 
+</div>
+
+<img onmouseover="src='./button/prev/christine_pre.png'" onmouseout="src='./button/prev/christine_nor.png'" onclick="location.href='./Scene1.html'"
+src="button/prev/christine_beg.png" alt="Previous" width="180" height="240">
+
+<img onmouseover="src='./button/next/andrew_nex.png'" onmouseout="src='./button/next/andrew_nor.png'" onclick="location.href='./Scene3.html'"
+src="button/next/andrew_beg.png" alt="Next!" width="160" height="220">
+
+</center>
+
+</body>
+
+<!-- Background Images -->
+<img id="bg01" src="./images/chap3scene2_01.png" style="display: none;">
+<img id="bg02" src="./images/chap3scene2_02.png" style="display: none;">
+<img id="bg03" src="./images/chap3scene2_03.png" style="display: none;">
+<img id="bg04" src="./images/chap3scene2_04.png" style="display: none;">
+<img id="bg05" src="./images/chap3scene2_05.png" style="display: none;">
+<img id="bg06" src="./images/chap3scene2_06.png" style="display: none;">
+<br>
+
+<center>
+<!-- Sound -->
+<audio controls autoplay>
+  <source src="./audio/scene02.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio> 
+</center>
+
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<script type="text/javascript">
+var y = 0;
+function pageScroll() {	
+	y++;
+	window.scroll(0,y); // horizontal and vertical scroll increments
+	scrolldelay = setTimeout('pageScroll()',30); // (important)scrolls every 100 milliseconds 
+	
+	if (y > 100){// < --  win.pageY kung anung maxumum Y axis ng windows mo.
+		scrolldelaynew = setTimeout('pageScroll()',0);
+	}
+	if (y >= 800){
+		playY();
+		clearTimeout(scrolldelay);
+		clearTimeout(scrolldelaynew);
+	}
+}
+
+function playY() {
+	  var myAudio = document.getElementById("scream");	  
+	    myAudio.play();
+	}
+
+</script>
+<head>
+	<!-- Link External CSS -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+<meta charset="ISO-8859-1">
+<title>E.O.T.M. - About</title>
+</head>
+
+
+<body onload="pageScroll()">
+
+	<h1>About</h1>
+	<h3>-Game Creators-</h3>
+	
+	<hr>
+	<h2><a href="index.html">Home - Intro</a></h2>
+	<h2><a href="chapters.html">Chapters</a></h2>
+	<h2><a href="characters.html">Characters</a></h2>
+	<h2><a href="about.html">About E.O.T.M.</a></h2>
+	<hr>
+	
+	<h4>Developed and Designed By:</h4>
+	<p>Nikolai Quintos</p>
+	<p>Angelo Sia</p>
+	
+	<h4>Graphics By:</h4>
+	<p><a href="http://www.bitstrips.com/user/LC2ZC/">BitStrips</a></p>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<center>
+<img id="MG" src="./images/XD.jpg" width="1300px" height="657px">
+</center>
+</body>
+	<audio id="scream">
+		<source src="audio/trip.mp3" type="audio/mpeg">
+		Your browser does not support the audio element.
+	</audio>
+	
+</html>

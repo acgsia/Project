@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Of The Month</title>
+
+
+
+<script type="text/javascript">
+
+function confirmAuto() { 
+	if (confirm("Do you want to activate auto play in this HTML? ")) {
+	  myFunctionY(); 
+	} else {
+		//myFunctionN(); optional
+	} 
+}
+
+function myFunctionY()
+{
+	
+	Ready();
+	pageScroll();
+	playY();
+	
+}
+function myFunctionN()
+{
+alert("Not Activated!");
+}
+
+var vcanvas, vimg1, vimg2, vcon;
+var imgx = 1, imgy = 0;
+
+
+function loadImage(){
+	vcanvas = document.getElementById("canvas1");
+	vcon = vcanvas.getContext("2d");
+	vimg1 = document.getElementById("img1");
+	
+	
+	vcon.drawImage(vimg1,imgx,imgy,710,362,0,0,710,362);//(srcimage,0,0,width,height)
+	
+
+	setInterval("animate()",1000);//milisecond per frame
+	
+	confirmAuto()//if they want it to be automatic
+
+	
+	
+}
+
+
+var counter=0, cx=710, cy=362;
+
+function animate(){
+	counter++; 
+
+	if (counter > 3) counter=0;
+	imgx = counter*710;
+	vcon.drawImage(vimg1,imgx,imgy,cx,cy,0,0,cx,cy);
+
+}
+	
+	//AutoScrolling
+	
+
+	var speed = 0;
+	var currPos = 0;
+	var newPos = 1;
+	var scroller = "";	
+	var scrollTimer = "";
+	var pause = false;
+
+	function startScroll(){//2nd step
+
+//		clearTimeout(scrollTimer); //need in delaying scroll
+		if (newPos > currPos && !pause)//if 
+			{
+			 currPos = scroller.scrollTop;
+			 speed = speed + 1; //how fast
+			 scroller.scrollTop = speed;
+			 newPos = scroller.scrollTop;
+			 setTimeout('startScroll()', 20);       
+			}
+	}
+
+	function Ready(){ //1st step
+		
+		scroller = document.getElementById('scrollBox');
+		scroller.scrollTop = 0;
+		
+		scrollTimer = setTimeout('startScroll()', 7000);   //  # seconds before the start;		
+		
+	}
+	function Resume(){
+		pause = false;
+		startScroll();
+	}
+	function Pause(){
+		pause = true;
+	}
+
+// new
+var y = 0;
+function pageScroll() {
+	
+	y++;
+	window.scroll(0,y); // horizontal and vertical scroll increments
+	scrolldelay = setTimeout('pageScroll()',30); // (important)scrolls every 100 milliseconds 
+	
+	
+	if (y > 160){// < --  win.pageY kung anung maxumum Y axis ng windows mo.
+		clearTimeout(scrolldelay);
+		y = 0;
+	}
+}
+
+function playY() {
+	  var myAudio = document.getElementById("player");
+	  
+	    myAudio.play();
+	}
+	
+	
+	
+</script>
+
+<style> 
+body
+{
+background:url("./images/officebg.jpg");
+background-size:100% 100%;
+background-repeat:no-repeat;
+padding-top:0px;
+}
+</style>
+
+</head>
+<body onload="loadImage()" background="./images/officebg.jpg">
+
+<center><h1 style="color: #FFFFFF;">Employee Of The Month</h1>
+<h2 style="color: #FFFFFF;">Chapter 2: Death Arrives</h2> 
+<h3 style="color: #FFFFFF;">Scene 1: Beginning of the End</h3>
+
+<canvas style="border-width: 10px;border-style: ridge;" id="canvas1" 
+width = "710" height = "362">This browser does not support this item</canvas>
+
+
+
+<div id="scrollBox" class="scroll" style="width:450px; height:80px; overflow:auto; color: #FFFFFF;">
+<br>
+Daniel started working for days now but he just cant shake off the feeling that everyone in the department treats him different.
+<br>
+<br>
+Daniel: Okay, I hate this feeling I need to know what is going on...
+<br>
+<br>
+The next morning Daniel went to work early just to talk to Lucas privately about what is happening. 
+
+
+</div>
+
+
+
+<input type="button" onClick="Resume()" value="Resume Scroll">
+<input type="button" onClick="Pause()" value="Pause Scroll">
+
+<br>
+<img id = "img1" alt="Office" src="./images/scene1.png" style="display: none">
+<img id = "img2" alt="Daniel" src="./images/dan1_transparent.png" style="display: none">
+<br>
+<img onmouseover="src='./button/prev/employee3_pre.png'" onmouseout="src='./button/prev/employee3_nor.png'" onclick="location.href='../chapters.html'"
+src="./button/prev/employee3_beg.png" alt="Previous" width="180" height="230">
+
+<img onmouseover="src='./button/next/lucas_nex.png'" onmouseout="src='./button/next/lucas_nor.png'" onclick="location.href='./EmployeeOfTheMonth-Chapter2-Scene2.html'"
+src="./button/next/lucas_beg.png" alt="Next!" width="160" height="240">
+</center>
+
+<audio id = "player" controls type="audio/mpeg">
+ <source src="./sounds/chapter2_part1.mp3">This browser does not support this player.</source>
+</audio> 
+
+</body>
+</html>

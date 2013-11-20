@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Of The Month</title>
+
+
+
+<script type="text/javascript">
+
+function confirmAuto() { 
+	if (confirm("Do you want to activate auto play in this HTML? ")) {
+	  myFunctionY(); 
+	} else {
+		//myFunctionN(); optional
+	} 
+}
+
+function myFunctionY()
+{
+	
+	Ready();
+	pageScroll();
+	playY();
+}
+function myFunctionN()
+{
+alert("Not Activated!");
+}
+
+var vcanvas, vimg1, vimg2, vcon;
+var imgx = 0, imgy = 0;
+
+
+function loadImage(){
+	vcanvas = document.getElementById("canvas1");
+	vcon = vcanvas.getContext("2d");
+	vimg1 = document.getElementById("img1");
+	vimg2 = document.getElementById("img2");
+	
+	vcon.drawImage(vimg1,0,0,710,362);//(srcimage,0,0,width,height)
+	vcon.drawImage(vimg2,imgx,0,200,244,-100,100,200,244);
+
+	setInterval("animate()",250);//milisecond per frame
+	
+	confirmAuto()//if they want it to be automatic
+
+	
+	
+}
+
+
+var counter=0, cx=-100, cy=0;
+
+function animate(){
+	counter++; 
+	cx += 10;
+	if (counter > 7) counter=0;
+	if (cx > 70){
+		cx=70;
+		counter = 7
+	}
+	imgx = counter*200;
+	vcon.drawImage(vimg1,0,0,710,362);
+	vcon.drawImage(vimg2,imgx,0,200,244,cx,100,200,244);
+
+}
+	
+	//AutoScrolling
+	
+
+	var speed = 0;
+	var currPos = 0;
+	var newPos = 1;
+	var scroller = "";	
+	var scrollTimer = "";
+	var pause = false;
+
+	function startScroll(){//2nd step
+
+//		clearTimeout(scrollTimer); //need in delaying scroll
+		if (newPos > currPos && !pause)//if 
+			{
+			 currPos = scroller.scrollTop;
+			 speed = speed + 1; //how fast
+			 scroller.scrollTop = speed;
+			 newPos = scroller.scrollTop;
+			 setTimeout('startScroll()', 20);       
+			}
+	}
+
+	function Ready(){ //1st step
+		
+		scroller = document.getElementById('scrollBox');
+		scroller.scrollTop = 0;
+		
+		scrollTimer = setTimeout('startScroll()', 10000);   //  # seconds before the start;		
+		
+	}
+	function Resume(){
+		pause = false;
+		startScroll();
+	}
+	function Pause(){
+		pause = true;
+	}
+
+// new
+var y = 0;
+function pageScroll() {
+	
+	y++;
+	window.scroll(0,y); // horizontal and vertical scroll increments
+	scrolldelay = setTimeout('pageScroll()',30); // (important)scrolls every 100 milliseconds 
+	
+	
+	if (y > 160){// < --  win.pageY kung anung maxumum Y axis ng windows mo.
+		clearTimeout(scrolldelay);
+		//y = 0;
+	}
+}
+
+function playY() {
+	  var myAudio = document.getElementById("player");
+	  
+	    myAudio.play();
+	}
+	
+	
+	
+</script>
+
+<style> 
+body
+{
+background:url("./images/officebg.jpg");
+background-size:100% 100%;
+background-repeat:no-repeat;
+padding-top:0px;
+}
+</style>
+
+</head>
+<body onload="loadImage()" background="./images/officebg.jpg">
+
+<center><h1 style="color: #FFFFFF;">Employee Of The Month</h1>
+<h2 style="color: #FFFFFF;">Chapter 2: Death Arrives</h2> 
+<h3 style="color: #FFFFFF;">Scene 4: The Witnessing</h3>
+
+<canvas style="border-width: 10px;border-style: ridge;" id="canvas1" 
+width = "710" height = "362">This browser does not support this item</canvas>
+
+
+
+<div id="scrollBox" class="scroll" style="width:400px; height:100px; overflow:auto; color: #FFFFFF;">
+<br>
+Daniel stands there. Shocked and Dont know what to do.
+<br>
+<br>
+Oliver: Its the curse... Christine is the first to die!! 
+<br>Its your entire fault! You approached her! shouted by Oliver who just entered.
+<br>
+<br>
+Office work was suspended that day and every one was sent home.
+
+
+
+
+</div>
+
+
+
+<input type="button" onClick="Resume()" value="Resume Scroll">
+<input type="button" onClick="Pause()" value="Pause Scroll">
+
+<br>
+<img id = "img1" alt="Office" src="./images/scene4.png" width=1 height=1>
+<img id = "img2" alt="Oliver" src="./images/oliver_transparent.png" style="display: none">
+
+<br>
+<img onmouseover="src='./button/prev/oliver_pre.png'" onmouseout="src='./button/prev/oliver_nor.png'" onclick="location.href='./EmployeeOfTheMonth-Chapter2-Scene3.html'"
+src="./button/prev/oliver_beg.png" alt="Previous" width="200" height="240">
+
+<img onmouseover="src='./button/next/employee1_nex.png'" onmouseout="src='./button/next/employee1_nor.png'" onclick="location.href='../chapters.html'"
+src="./button/next/employee1_beg.png" alt="Next!" width="200" height="240">
+</center>
+
+<audio id = "player" controls type="audio/mpeg">
+ <source src="./sounds/chapter2_part4.mp3">This browser does not support this player.</source>
+</audio> 
+
+</body>
+</html>

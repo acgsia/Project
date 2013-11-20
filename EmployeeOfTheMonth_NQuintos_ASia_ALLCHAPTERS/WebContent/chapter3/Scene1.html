@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Link External CSS -->
+<link rel="stylesheet" type="text/css" href="./style_scenes.css">
+<meta charset="ISO-8859-1">
+<title>Employee of the Month</title>
+
+<!-- Script -->
+<script type="text/javascript">
+var vCanvas, vContext, vBackground01, vBackground02, vCharacter01;
+var imgPosX = 0, imgPosY = 0; // image positions
+
+function loadScene() {
+	// alert("Test Function. OK.");
+	vCanvas = document.getElementById("sceneCanvas");
+	vContext = vCanvas.getContext("2d");
+	vBackground01 = document.getElementById("bg01");
+	vBackground02 = document.getElementById("bg02");
+	vCharacter01 = document.getElementById("dan01");
+	vCharacter02 = document.getElementById("luc01");
+	
+	// start loading image background
+	vContext.drawImage(vBackground01, 0, 0);
+	// start loading image character daniel
+	vContext.drawImage(vCharacter01, imgPosX, imgPosY, 180, 260, 200, 62, 180, 260);
+	// call to animate the image
+	setInterval("animate()", 1200);
+}
+
+var counter = 0;
+var move = 0;
+
+function animate() {
+	
+	if (counter >= 0 && counter <= 4) {
+		counter++;
+		imgPosX = counter * 170;
+		// start loading image background
+		vContext.drawImage(vBackground01, 0, 0);
+		// start loading image character daniel
+		vContext.drawImage(vCharacter01, imgPosX, imgPosY, 180, 260, 200, 62, 180, 260);
+	}
+	
+	if (counter == 5) {
+		imgPosX = 0;
+		counter++;
+	}
+	
+	if (counter >= 6) {
+		counter++;
+		// start loading image background
+		vContext.drawImage(vBackground02, 0, 0);
+		// start loading image character daniel
+		vContext.drawImage(vCharacter01, imgPosX, imgPosY, 180, 260, 310, 62, 180, 260);
+		vContext.drawImage(vCharacter02, imgPosX, imgPosY, 180, 260, 100, 62, 180, 260);
+		imgPosX = move * 170;
+		move++;
+	}
+	
+	if (counter >= 10) {
+		counter = 0;
+		move = 0;
+	}
+	
+}
+</script>
+
+</head>
+<body onload="loadScene()" background="../images/officebg.jpg">
+
+<h1>Employee of the Month</h1>
+<h2>Chapter 3 - Past connects Present</h2>
+<h3>Scene 01: What should I do?</h3>
+
+<center>
+<canvas id="sceneCanvas" width="604" height="333" style="border-width: 8px; border-style: inset;">Canvas not supported!</canvas>
+<br>
+<div style="width: 450px; height: 150px; line-height: 3em; overflow: auto; padding: 5px; text-align: center;">
+<p>Daniel didn't know what to do. He was traumatized after what happened; everyone was just looking at him like he was the killer. A week after, Daniel approached Lucas. "Why are they...? I can't go on like this; I need to know what is going on with this department." Says Daniel. "Okay, I think you have the right to know what is going on." Lucas said. Lucas started telling a story:</p> 
+</div>
+
+
+<img onmouseover="src='./button/prev/elliot_pre.png'" onmouseout="src='./button/prev/elliot_nor.png'" onclick="location.href='../chapters.html'"
+src="button/prev/elliot_beg.png" alt="Previous" width="150" height="240">
+
+<img onmouseover="src='./button/next/dan_nex.png'" onmouseout="src='./button/next/dan_nor.png'" onclick="location.href='./Scene2.html'"
+src="button/next/dan_beg.png" alt="Next!" width="190" height="220">
+
+</center>
+
+</body>
+
+<!-- Background Images -->
+<img id="bg01" src="./images/chap3bg01.png" style="display: none;">
+<img id="bg02" src="./images/chap3bg02.png" style="display: none;">
+
+<!-- Characters Images -->
+<img id="dan01" src="./images/danchap3_01.png" style="display: none;">
+<img id="luc01" src="./images/lucchap3_01.png" style="display: none;">
+<br>
+
+<center>
+<!-- Sound -->
+<audio controls autoplay>
+  <source src="./audio/scene01.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+</center>
+
+</html>

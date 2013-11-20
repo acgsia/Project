@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Link External CSS -->
+	<link rel="stylesheet" type="text/css" href="./style_scenes.css">
+<meta charset="ISO-8859-1">
+<title>Employee of the Month</title>
+
+<!-- Script -->
+<script type="text/javascript">
+
+var vCanvas, vContext, vBackground01;
+var imgPosXCan = 0, imgPosX = 0, imgPosY = 0;
+
+function loadScene() {
+	vCanvas = document.getElementById("sceneCanvas");
+	vContext = vCanvas.getContext("2d");
+	vBackground01 = document.getElementById("bg01");
+	
+	// start loading image background
+	vContext.drawImage(vBackground01, 0, 0);
+	
+	// call to animate the images
+	setInterval("animateCanvas()", 800);
+}
+
+var countCanvas = 0;
+
+function animateCanvas() {
+	countCanvas++;
+	
+	if (countCanvas == 8) countCanvas = 0;
+	
+	imgPosXCan = countCanvas * 600;
+	
+	// start loading image background 1
+	vContext.drawImage(vBackground01, imgPosXCan, 0, 600, 330, 0, 0, 600, 330);
+	
+}
+
+</script>
+
+</head>
+<body onload="loadScene()" background="./images/officebg.jpg" >
+
+<h1>Employee of the Month</h1>
+<h2>Chapter 5 - And the Employee-of-the-Month is...</h2>
+<h3>Scene 02: answers.mp3</h3>
+<center>
+<canvas id="sceneCanvas" width="600" height="330" style="border-width: 8px; border-style: inset;">Canvas not Supported!</canvas>
+
+<br>
+	<div style="width: 400px; height: 150px; line-height: 3em; overflow: auto; padding: 5px; text-align: center;">
+		<p>
+		"Hey, Daniel, I think my computer is infected with virus. Can you help me fix it?" Says Eliot.
+		"Sure, wait let me scan it... Hmmm. There is a file that can't be cleaned and can't be deleted.
+		It's an audio file. Want to play it?" asks Daniel.
+		"Sure..."
+		After clicking play a man who seems going crazy is heard:
+		*audio plays* "If you are hearing this then you are probably sitting at my old computer table.
+		I am an employee at the Developer's Department of a little company of Capstone.
+		I am making this record to tell my sins to whomever who is listening to this audio.
+		I stopped the death chain. And I did it by killing the guest employee, the real Employee-of-the-Month.
+		There is no way but to guess to find out who is the Employee-of-the-Month but to start killing the employees.
+		To the future employees... I wish you good luck." *audio stops*
+		</p>
+	</div>
+	
+
+	<img onmouseover="src='./button/prev/christine_pre.png'" onmouseout="src='./button/prev/christine_nor.png'" onclick="location.href='./Scene1.html'"
+src="button/prev/christine_beg.png" alt="Previous" width="180" height="240">
+
+<img onmouseover="src='./button/next/andrew_nex.png'" onmouseout="src='./button/next/andrew_nor.png'" onclick="location.href='./Scene3.html'"
+src="button/next/andrew_beg.png" alt="Next!" width="160" height="220">
+<br>
+</center>
+</body>
+
+	<!-- Sounds -->
+	<audio controls autoplay>
+		<source src="./audio/scene02.mp3" type="audio/mpeg">
+		Your browser does not support the audio element.
+		</source>
+	</audio>
+	
+	<!-- Images -->
+	<img id="bg01" src="./images/chap3scene5_04_frame.png" style="display: none;">
+
+</html>

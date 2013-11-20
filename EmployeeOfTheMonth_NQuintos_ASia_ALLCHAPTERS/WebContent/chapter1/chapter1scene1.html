@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<!-- Link External CSS -->
+<link rel="stylesheet" type="text/css" href="../style.css">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Employee-Of-The-Month</title>
+
+<!-- Script -->
+<script type="text/javascript">
+
+var vCanvas, vContext, vBackground01, vCharacter01;
+var imgPosX = 0, imgPosY = 0; // image positions
+
+function loadScene01() {
+	// alert("Test");
+	vCanvas = document.getElementById("sceneCanvas");
+	vContext = vCanvas.getContext("2d");
+	vBackground01 = document.getElementById("scene01BG");
+	vCharacter01 = document.getElementById("scene01Daniel");
+	// start loading image background
+	vContext.drawImage(vBackground01, 0, 0);
+	// start loading image character daniel
+	vContext.drawImage(vCharacter01, imgPosX, imgPosY, 180, 260, 294, 62, 180, 260);
+	// call to animate the image
+	setInterval("animate()", 800);
+}
+
+var counter = 0;
+
+function animate() {
+	counter++;
+	if (counter > 2) counter = 0;
+	imgPosX = counter * 180;
+	// start loading image background
+	vContext.drawImage(vBackground01, 0, 0);
+	// start loading image character daniel
+	vContext.drawImage(vCharacter01, imgPosX, imgPosY, 180, 260, 294, 62, 180, 260);
+}
+</script>
+
+</head>
+<body onload="loadScene01()" background="../images/officebg.jpg">
+
+<!-- Title, Chapter and Scene -->
+<center>
+<h1>Employee Of The Month</h1>
+<h2>Chapter 1 - Guest</h2>
+<h3>Scene 01: The Extra Employee</h3>
+</center>
+
+<!-- Start Code Block contains Canvas, Images and Button -->
+<center>
+
+<canvas id="sceneCanvas" width="604" height="333" style="border-width: 8px; border-style: inset;" >Canvas not supported.</canvas>
+<br>
+<div style="width: 300px; height: 150px; line-height: 3em; overflow: auto; padding: 5px; text-align: center;">
+<p>"I finally got in to Capstone. I'm going to make the best of it!" says Daniel while he walks into the front door of Capstone Corporation.</p> 
+</div>
+
+<img onmouseover="src='./button/prev/elliot_pre.png'" onmouseout="src='./button/prev/elliot_nor.png'" onclick="location.href='../chapters.html'"
+src="button/prev/elliot_beg.png" alt="Previous" width="150" height="240">
+
+<img onmouseover="src='./button/next/dan_nex.png'" onmouseout="src='./button/next/dan_nor.png'" onclick="location.href='./chapter1scene2.html'"
+src="button/next/dan_beg.png" alt="Next!" width="190" height="220">
+</center>
+<!-- End Code Block contains Canvas, Images and Button -->
+
+</body>
+
+<!-- Images -->
+<img id="scene01BG" src="./images/bg_scene01.png" style="display: none;">
+<img id="scene01Daniel" src="./images/daniel_scene01.png" style="display: none;">
+
+<audio controls autoplay>
+  <source src="./audio/scene01.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio> 
+
+</html>

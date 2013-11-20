@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Of The Month</title>
+
+
+
+
+<script type="text/javascript">
+
+function confirmAuto() { 
+	if (confirm("Do you want to activate auto play in this HTML? ")) {
+	  myFunctionY(); 
+	} else {
+		//myFunctionN(); optional
+	} 
+}
+
+function myFunctionY()
+{
+	
+	Ready();
+	pageScroll();
+	playY();
+	
+}
+function myFunctionN()
+{
+alert("Not Activated!");
+}
+
+var vcanvas, vimg1, vimg2, vcon;
+var imgx = 1, imgy = 0;
+
+
+function loadImage(){
+	vcanvas = document.getElementById("canvas1");
+	vcon = vcanvas.getContext("2d");
+	vimg1 = document.getElementById("img1");
+	
+	
+	vcon.drawImage(vimg1,imgx,imgy,781,398,0,0,781,398);//(srcimage,0,0,width,height)
+	
+
+	setInterval("animate()",2000);//milisecond per frame
+	
+	confirmAuto()//if they want it to be automatic
+
+	
+	
+}
+
+
+var counter=0, cx=710, cy=362;
+
+function animate(){
+	counter++; 
+
+	if (counter > 5) counter=0;
+	imgx = counter*781;
+	vcon.drawImage(vimg1,imgx,imgy,cx,cy,0,0,cx,cy);
+
+}
+	
+	//AutoScrolling
+	
+
+	var speed = 0;
+	var currPos = 0;
+	var newPos = 1;
+	var scroller = "";	
+	var scrollTimer = "";
+	var pause = false;
+
+	function startScroll(){//2nd step
+
+//		clearTimeout(scrollTimer); //need in delaying scroll
+		if (newPos > currPos && !pause)//if 
+			{
+			 currPos = scroller.scrollTop;
+			 speed = speed + 1; //how fast
+			 scroller.scrollTop = speed;
+			 newPos = scroller.scrollTop;
+			 setTimeout('startScroll()', 20);       
+			}
+	}
+
+	function Ready(){ //1st step
+		
+		scroller = document.getElementById('scrollBox');
+		scroller.scrollTop = 0;
+		
+		scrollTimer = setTimeout('startScroll()', 12000);   //  # seconds before the start;		
+		
+	}
+	function Resume(){
+		pause = false;
+		startScroll();
+	}
+	function Pause(){
+		pause = true;
+	}
+
+// new
+var y = 0;
+function pageScroll() {
+	
+	y++;
+	window.scroll(0,y); // horizontal and vertical scroll increments
+	scrolldelay = setTimeout('pageScroll()',30); // (important)scrolls every 100 milliseconds 
+	
+	if (y > 160){// < --  win.pageY kung anung maxumum Y axis ng windows mo.
+		clearTimeout(scrolldelay);
+	}
+}
+
+function playY() {
+	  var myAudio = document.getElementById("player");
+	  
+	    myAudio.play();
+	}
+	
+	
+	
+</script>
+
+<style> 
+body
+{
+background:url("./images/officebg.jpg");
+background-size:100% 100%;
+background-repeat:no-repeat;
+padding-top:0px;
+}
+</style>
+
+</head>
+<body onload="loadImage()" background="./images/officebg.jpg">
+
+<center><h1 style="color: #FFFFFF;">Employee Of The Month</h1>
+<h2 style="color: #FFFFFF;">Chapter 4: Like a Ghost</h2> 
+<h3 style="color: #FFFFFF;">Scene 1: Tradition</h3>
+
+<canvas style="border-width: 10px;border-style: ridge;" id="canvas1" 
+width = "781" height = "398">This browser does not support this item</canvas>
+
+
+
+<div id="scrollBox" class="scroll" style="width:500px; height:135px; overflow:auto; color: #FFFFFF;">
+<br>
+Daniel ignores Lucas advised solution and decided to still, approach Eliot and befriend her.
+<br>
+<br>
+Daniel: I know the story. I know why you dont talk to others and why your presence is minimal. 
+<br>But I dont think you have to do what they told you to stop the deaths of the employees. 
+<br>They are crazy to believe that. 
+<br>
+<br>
+Eliot: It has been a tradition. It is proven there is nothing we can do to stop Eden. 
+<br>He will kill all of us if no one is put into his position.
+
+
+
+</div>
+
+
+
+<input type="button" onClick="Resume()" value="Resume Scroll">
+<input type="button" onClick="Pause()" value="Pause Scroll">
+
+<br>
+<img id = "img1" alt="Office" src="./images/scene1.png" style="display: none">
+<img id = "img2" alt="Daniel" src="./images/dan1_transparent.png" style="display: none">
+<br>
+<img onmouseover="src='./button/prev/employee3_pre.png'" onmouseout="src='./button/prev/employee3_nor.png'" onclick="location.href='../chapters.html'"
+src="./button/prev/employee3_beg.png" alt="Previous" width="180" height="230">
+
+<img onmouseover="src='./button/next/lucas_nex.png'" onmouseout="src='./button/next/lucas_nor.png'" onclick="location.href='./EmployeeOfTheMonth-Chapter4-Scene2.html'"
+src="./button/next/lucas_beg.png" alt="Next!" width="160" height="240">
+</center>
+
+<audio id = "player" controls type="audio/mpeg">
+ <source src="./sounds/part 1.mp3">This browser does not support this player.</source>
+</audio> 
+
+</body>
+</html>

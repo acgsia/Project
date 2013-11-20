@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<script type="text/javascript">
+
+function danielP() {
+	  var myAudio = document.getElementById("daniel");
+	      myAudio.play();
+}
+
+function elliotP() {
+	  var myAudio = document.getElementById("elliot");
+	      myAudio.play();
+}
+
+function meganP() {
+	  var myAudio = document.getElementById("megan");
+	      myAudio.play();
+}
+
+function lucasP() {
+	  var myAudio = document.getElementById("lucas");
+	      myAudio.play();
+}
+
+</script>
+<head>
+	<!-- Link External CSS -->
+	<link rel="stylesheet" type="text/css" href="./style_scenes.css">
+<meta charset="ISO-8859-1">
+<title>Employee of the Month</title>
+
+<!-- Script -->
+<script type="text/javascript">
+
+</script>
+
+</head>
+<body background="./images/officebg.jpg" style="height: 645px">
+
+<h1>Employee of the Month</h1>
+<h2>Chapter 5 - And the Employee-of-the-Month is...</h2>
+<h3>Scene 05: Judgement</h3>
+
+<br>	
+<br>
+<br>
+<center>
+<img onmouseover="src='choose/daniel_2.png' , danielP()" onmouseout="src='choose/daniel_1.png'" onclick="location.href='./end/Fail.html'"
+src="choose/daniel_1.png" alt="Daniel" width="200" height="260" style="cursor:pointer">
+
+<img onmouseover="src='choose/elliot_2.png' , elliotP()" onmouseout="src='choose/elliot_1.png'" onclick="location.href='./end/Fail.html'"
+src="choose/elliot_1.png" alt="Elliot" width="200" height="260" style="cursor:pointer">
+
+<img onmouseover="src='choose/megan_2.png' , meganP()" onmouseout="src='choose/megan_1.png'" onclick="location.href='./end/Fail.html'"
+src="choose/megan_1.png" alt="Megan" width="200" height="260" style="cursor:pointer">
+
+<img onmouseover="src='choose/lucas_2.png' , lucasP()" onmouseout="src='choose/lucas_1.png'" onclick="location.href='./end/End.html'"
+src="choose/lucas_1.png" alt="Lucas" width="200" height="260" style="cursor:pointer">
+</center>
+</body>
+
+	<!-- Sounds -->		
+	<audio id="daniel">
+		<source src="voice/daniel.mp3" type="audio/mpeg">
+		Your browser does not support the audio element.
+	</audio>
+	
+	<audio id="elliot">
+		<source src="voice/elliot.mp3" type="audio/mpeg">
+		Your browser does not support the audio element.
+	</audio>
+	
+	<audio id="megan">
+		<source src="voice/megan.mp3" type="audio/mpeg">
+		Your browser does not support the audio element.
+	</audio>
+	
+	<audio id="lucas">
+		<source src="voice/lucas.mp3" type="audio/mpeg">
+		Your browser does not support the audio element.
+	</audio>
+
+</html>

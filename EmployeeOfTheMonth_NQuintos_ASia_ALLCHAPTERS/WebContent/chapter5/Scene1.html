@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Link External CSS -->
+	<link rel="stylesheet" type="text/css" href="./style_scenes.css">
+<meta charset="ISO-8859-1">
+<title>Employee of the Month</title>
+
+<!-- Script -->
+<script type="text/javascript">
+var vCanvas, vContext, vBackground01, vBackground02, vBackground03;
+var vCharacter01, vCharacter02;
+var imgPosXCan = 0, imgPosX = 0, imgPosY = 0; // image positions
+
+function loadScene() {
+	vCanvas = document.getElementById("sceneCanvas");
+	vContext = vCanvas.getContext("2d");
+	vBackground01 = document.getElementById("bg01");
+	vBackground02 = document.getElementById("bg02");
+	vBackground03 = document.getElementById("bg03");
+	vCharacter01 = document.getElementById("dan_frame");
+	vCharacter02 = document.getElementById("and_frame");
+	
+	// start loading image background
+	vContext.drawImage(vBackground01, 0, 0);
+	// start loading image character daniel
+	vContext.drawImage(vCharacter01, 0, 0, 227, 327, 20, -13, 227, 327);
+	// call to animate the images
+	setInterval("animateCanvas()", 600);
+	setInterval("animateCharac()", 600);
+}
+
+var countCanvas = 0, changePicCounter = 0, countCharac = 0, changeCharacCount = 0;
+var imgPlaceXFall = 45;
+
+function animateCanvas() {
+	
+	if (countCanvas >= 0 && countCanvas <= 5) {
+		countCanvas++;
+		changePicCounter++;
+		imgPosXCan = changePicCounter * 600;
+		// start loading image background 1
+		vContext.drawImage(vBackground01, imgPosXCan, 0, 600, 330, 0, 0, 600, 330);
+		if (countCanvas == 5) {
+			changePicCounter = -1;
+		}
+	}
+	
+	if (countCanvas >= 5 && countCanvas <= 10) {
+		countCanvas++;
+		changePicCounter++;
+		imgPosXCan = changePicCounter * 600;
+		// start loading image background 2
+		vContext.drawImage(vBackground02, imgPosXCan, 0, 600, 330, 0, 0, 600, 330);
+		// No black screen solution
+		if (countCanvas == 11) {
+			changePicCounter = -1;
+		}
+	}
+	
+	if (countCanvas >= 11 && countCanvas <= 16) {
+		countCanvas++;
+		changePicCounter++;
+		imgPosXCan = changePicCounter * 600;
+		// start loading image background 2
+		vContext.drawImage(vBackground03, imgPosXCan, 0, 600, 330, 0, 0, 600, 330);
+		// No black screen solution
+		if (countCanvas == 17) {
+			changePicCounter = 0;
+			countCanvas = 0;
+			vContext.drawImage(vBackground01, 0, 0);
+		}
+	} 
+	
+}
+
+function animateCharac() {
+	
+	if (countCharac >= 0 && countCharac <=3) {
+		countCharac++;
+		changeCharacCount++;
+		imgPosX = changeCharacCount * 227;
+		vContext.drawImage(vCharacter01, imgPosX, imgPosY, 227, 327, 20, -13, 227, 327);
+		if (countCharac == 4) {
+			changeCharacCount = -1;
+		}
+	}
+	
+	else if (countCharac >= 4 && countCharac <= 7) {
+		countCharac++;
+		changeCharacCount++;
+		imgPosX = changeCharacCount * 308;
+		imgPlaceXFall += 13;
+		vContext.drawImage(vCharacter02, imgPosX, imgPosY, 308, 292, 160, imgPlaceXFall, 308, 292);
+	}
+	
+	else if (countCharac == 8) {
+		vContext.drawImage(vCharacter02, imgPosX, imgPosY, 308, 292, 160, 130, 308, 292);
+		countCharac++;
+		imgPlaceXFall = 0;
+	}
+	
+	else if (countCharac >= 8 && countCharac <= 13) {
+		countCharac++;
+	}
+	
+	else if (countCharac == 14) {
+		vContext.drawImage(vCharacter01, 0, 0, 227, 327, 20, -13, 227, 327);
+		changeCharacCount = 0;
+		countCharac = 0;
+	}
+	
+}
+
+</script>
+
+</head>
+<body onload="loadScene()" background="./images/officebg.jpg">
+
+<h1>Employee of the Month</h1>
+<h2>Chapter 5 - And the Employee-of-the-Month is...</h2>
+<h3>Scene 01: Friendship</h3>
+
+<center>
+<canvas id="sceneCanvas" width="600" height="330" style="border-width: 8px; border-style: inset;">Canvas not Supported!</canvas>
+
+<br>
+	<div style="width: 400px; height: 150px; line-height: 3em; overflow: auto; padding: 5px; text-align: center;">
+		<p>
+		Daniel and Eliot became friends because of their situation on the company; after all they are the only ones that can talk 
+		to each other. But it did not stop from there. Another Death occurred. Two weeks after Oliver's death, Andrew was the next 
+		who died. He fell from the top floor of the company to the ground. It was a nasty death. Even after the deaths, the 
+		employees still continue to ignore Daniel and Eliot and excluded them from the department.
+		</p>
+	</div>
+	
+	<img onmouseover="src='./button/prev/elliot_pre.png'" onmouseout="src='./button/prev/elliot_nor.png'" onclick="location.href='../chapters.html'"
+src="button/prev/elliot_beg.png" alt="Previous" width="150" height="240">
+
+<img onmouseover="src='./button/next/dan_nex.png'" onmouseout="src='./button/next/dan_nor.png'" onclick="location.href='./Scene2.html'"
+src="button/next/dan_beg.png" alt="Next!" width="190" height="220">
+</center>	
+<br>
+</body>
+
+	<!-- Sounds -->
+	<audio controls autoplay>
+		<source src="./audio/scene01.mp3" type="audio/mpeg">
+		Your browser does not support the audio element.
+		</source>
+	</audio>
+	
+	<!-- Images -->
+	<img id="bg01" src="./images/chap3scene5_01_frame.png" style="display: none;">
+	<img id="bg02" src="./images/chap3scene5_02_frame.png" style="display: none;">
+	<img id="bg03" src="./images/chap3scene5_03_frame.png" style="display: none;">
+	
+	<!-- Character Frames -->
+	<img id="dan_frame" src="./frames/daniel_scene01_frame.png" style="display: none;">
+	<img id="and_frame" src="./frames/andrew_scene01_frame.png" style="display: none;">
+
+</html>

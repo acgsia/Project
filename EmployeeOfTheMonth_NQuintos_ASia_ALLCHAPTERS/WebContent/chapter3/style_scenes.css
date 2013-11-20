@@ -1,0 +1,29 @@
+@CHARSET "ISO-8859-1";
+
+h1 {
+	font-family: serif;
+	text-align: center;
+	color: white;
+}
+
+h2 {
+	font-family: serif;
+	text-align: center;
+	color: white;
+}
+
+h3 {
+	font-family: serif;
+	text-align: center;
+	color: white;
+}
+
+p {
+	font-family: serif;
+	text-align: center;
+	color: white;
+}
+
+body {
+	background-color: black;
+}

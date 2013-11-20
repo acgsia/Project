@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Of The Month</title>
+
+
+
+<script type="text/javascript">
+
+function confirmAuto() { 
+	if (confirm("Do you want to activate auto play in this HTML? ")) {
+	  myFunctionY(); 
+	} else {
+		//myFunctionN(); optional
+	} 
+}
+
+function myFunctionY()
+{
+	
+	Ready();
+	pageScroll();
+	playY();
+}
+function myFunctionN()
+{
+alert("Not Activated!");
+}
+
+var vcanvas, vimg1, vimg2, vcon;
+var imgx = 1, imgy = 0;
+
+
+function loadImage(){
+	vcanvas = document.getElementById("canvas1");
+	vcon = vcanvas.getContext("2d");
+	vimg1 = document.getElementById("img1");
+	
+	
+	vcon.drawImage(vimg1,imgx,imgy,710,362,0,0,710,362);//(srcimage,0,0,width,height)
+	
+
+	setInterval("animate()",11500);//milisecond per frame
+	
+	confirmAuto()//if they want it to be automatic
+
+	
+	
+}
+
+
+var counter=0, cx=710, cy=362;
+
+function animate(){
+	counter++; 
+
+	if (counter > 4) counter=0;
+	imgx = counter*710;
+	vcon.drawImage(vimg1,imgx,imgy,cx,cy,0,0,cx,cy);
+
+}
+	
+	//AutoScrolling
+	
+
+	var speed = 0;
+	var currPos = 0;
+	var newPos = 1;
+	var scroller = "";	
+	var scrollTimer = "";
+	var pause = false;
+
+	function startScroll(){//2nd step
+
+//		clearTimeout(scrollTimer); //need in delaying scroll
+		if (newPos > currPos && !pause)//if 
+			{
+			 currPos = scroller.scrollTop;
+			 speed = speed + 1; //how fast
+			 scroller.scrollTop = speed;
+			 newPos = scroller.scrollTop;
+			 setTimeout('startScroll()', 20);       
+			}
+	}
+
+	function Ready(){ //1st step
+		
+		scroller = document.getElementById('scrollBox');
+		scroller.scrollTop = 0;
+		
+		scrollTimer = setTimeout('startScroll()', 17000);   //  # seconds before the start;		
+		
+	}
+	function Resume(){
+		pause = false;
+		startScroll();
+	}
+	function Pause(){
+		pause = true;
+	}
+
+// new
+var y = 0;
+function pageScroll() {
+	
+	y++;
+	window.scroll(0,y); // horizontal and vertical scroll increments
+	scrolldelay = setTimeout('pageScroll()',30); // (important)scrolls every 100 milliseconds 
+	
+	
+	if (y > 160){// < --  win.pageY kung anung maxumum Y axis ng windows mo.
+		clearTimeout(scrolldelay);
+		//y = 0;
+	}
+}
+
+function playY() {
+	  var myAudio = document.getElementById("player");
+	  
+	    myAudio.play();
+	}
+	
+	
+	
+</script>
+
+<style> 
+body
+{
+background:url("./images/officebg.jpg");
+background-size:100% 100%;
+background-repeat:no-repeat;
+padding-top:0px;
+}
+</style>
+
+</head>
+<body onload="loadImage()" background="./images/officebg.jpg">
+
+<center><h1 style="color: #FFFFFF;">Employee Of The Month</h1>
+<h2 style="color: #FFFFFF;">Chapter 2: Death Arrives</h2> 
+<h3 style="color: #FFFFFF;">Scene 3: The First One Dies</h3>
+
+<canvas style="border-width: 10px;border-style: ridge;" id="canvas1" 
+width = "710" height = "362">This browser does not support this item</canvas>
+
+
+
+<div id="scrollBox" class="scroll" style="width:650px; height:200px; overflow:auto; color: #FFFFFF;">
+<br>
+Christine: Hey, youre so early.
+<br>
+<br>
+Daniel: You scared me there! You should say something or knock, Christine. 
+<br>
+<br>
+Chirstine: *laughs* Im sorry I startled you. Who are you talking to? asks Christine.
+<br>
+<br>
+Daniel: Oh! Im talking to her... What?! Whered she go? She was here a second ago.
+<br>
+<br>
+Christine: Who?
+<br>
+<br>
+Daniel: A woman with long black hair whos also an employee here...
+<br>
+<br>
+Christine: Come on. Dont scare me like that, theres no one here. 
+<br>You shouldnt approach something you dont know, Daniel. Christine spoke.
+<br>
+<br>
+Christine goes to her cubicle turns on her computer. A spark occurs followed by a loud sound. 
+The computer explodes and electrified Christine. 
+The monitors glass shoots on Christines face. 
+Christine immediately dies with the monitor glass slicing her brain. 
+
+
+
+</div>
+
+
+
+<input type="button" onClick="Resume()" value="Resume Scroll">
+<input type="button" onClick="Pause()" value="Pause Scroll">
+
+<br>
+<img id = "img1" alt="Office" src="./images/scene3.png" style="display: none">
+
+<br>
+<img onmouseover="src='./button/prev/elliot_pre.png'" onmouseout="src='./button/prev/elliot_nor.png'" onclick="location.href='./EmployeeOfTheMonth-Chapter2-Scene2.html'"
+src="./button/prev/elliot_beg.png" alt="Previous" width="150" height="240">
+
+<img onmouseover="src='./button/next/mg_nex.png'" onmouseout="src='./button/next/mg_nor.png'" onclick="location.href='./EmployeeOfTheMonth-Chapter2-Scene4.html'"
+src="./button/next/mg_beg.png" alt="Next!" width="140" height="240">
+</center>
+
+<audio id = "player" controls type="audio/mpeg">
+ <source src="./sounds/chapter2_part3.mp3">This browser does not support this player.</source>
+</audio> 
+
+</body>
+</html>

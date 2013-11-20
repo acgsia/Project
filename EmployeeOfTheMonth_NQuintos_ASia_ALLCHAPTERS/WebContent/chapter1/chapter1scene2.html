@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<!-- Link External CSS -->
+<link rel="stylesheet" type="text/css" href="../style.css">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Employee-Of-The-Month</title>
+
+<!-- Script -->
+<script type="text/javascript">
+
+var vCanvas, vContext, vBackground02, vCharacter02, vWomanRecept;
+var imgPosX = 0, imgPosY = 0; // image positions
+
+function loadScene02() {
+	// alert("Test");
+	vCanvas = document.getElementById("sceneCanvas");
+	vContext = vCanvas.getContext("2d");
+	vBackground02 = document.getElementById("scene02BG");
+	vCharacter02 = document.getElementById("scene02Daniel");
+	vWomanRecept = document.getElementById("womanReception");
+	// start loading image background
+	vContext.drawImage(vBackground02, 0, 0);
+	// start loading image character daniel
+	vContext.drawImage(vCharacter02, imgPosX, imgPosY, 180, 260, 130, 65, 180, 260);
+	// start loading image woman reception
+	vContext.drawImage(vWomanRecept, imgPosX, imgPosY, 180, 260, 430, 79, 180, 260);
+	// call to animate the image
+	setInterval("animate()", 1000);
+}
+
+var counter = 0;
+var imgPlaceX = 130;
+
+function animate() {
+	counter++;
+	imgPlaceX += 55;
+	if (counter > 3) {
+		counter = 0;
+		imgPlaceX =  130;
+	}
+	imgPosX = counter * 180;
+	// start loading image background
+	vContext.drawImage(vBackground02, 0, 0);
+	// start animating image character daniel
+	vContext.drawImage(vCharacter02, imgPosX, imgPosY, 180, 260, imgPlaceX, 65, 180, 260);
+	// start animating image woman reception
+	vContext.drawImage(vWomanRecept, imgPosX, imgPosY, 180, 260, 430, 79, 180, 260);
+}
+</script>
+
+</head>
+<body onload="loadScene02()" background="../images/officebg.jpg">
+
+<!-- Title, Chapter and Scene -->
+<center>
+<h1>Employee Of The Month</h1>
+<h2>Chapter 1 - Guest</h2>
+<h3>Scene 02: Lost</h3>
+</center>
+<!-- Start Code Block contains Canvas, Images and Button -->
+<center>
+
+<canvas id="sceneCanvas" width="604" height="333" style="border-width: 8px; border-style: inset;" >Canvas not supported.</canvas>
+<br>
+<div style="width: 400px; height: 170px; line-height: 3em; overflow: auto; padding: 5px; text-align: center;">
+<p>He found his way to the reception and asked the woman in charge: "Hello, I'm Daniel, a new intern." The woman froze and looked at him deeply with eyes enlarging. Daniel continued to ask "Do you know where this department is located? I'm kind of lost..." The woman gave a confused looked as she searched for papers. She finally replied and told Daniel "Just follow this map and you'll be there." "Okay... Thank you very much" says Daniel who is also confused. "Do I look like a ghost who just arrived? She looked at me like I'm a ghost of some sort. I'm not that bad looking to look like a ghost, right?" Daniel ponders.</p> 
+</div>
+
+<img onmouseover="src='./button/prev/christine_pre.png'" onmouseout="src='./button/prev/christine_nor.png'" onclick="location.href='./chapter1scene1.html'"
+src="button/prev/christine_beg.png" alt="Previous" width="180" height="240">
+
+<img onmouseover="src='./button/next/andrew_nex.png'" onmouseout="src='./button/next/andrew_nor.png'" onclick="location.href='./chapter1scene3.html'"
+src="button/next/andrew_beg.png" alt="Next!" width="160" height="220">
+</center>
+
+</body>
+
+<!-- Images -->
+<img id="scene02BG" src="./images/bg_scene02.png" style="display: none;">
+<img id="scene02Daniel" src="./images/daniel_scene02.png" style="display: none;">
+<img id="womanReception" src="./images/womanReception.png" style="display: none;">
+
+<audio controls autoplay>
+  <source src="./audio/scene02.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio> 
+
+</html>

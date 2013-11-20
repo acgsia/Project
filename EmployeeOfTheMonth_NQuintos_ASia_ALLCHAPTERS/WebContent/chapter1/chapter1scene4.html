@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html id="page2">
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Of The Month</title>
+
+
+<script type="text/javascript">
+var vcanvas, vimg1, vimg2, vcon;
+var imgx = 0, imgy = 0;
+function loadImage(){
+	vcanvas = document.getElementById("canvas1");
+	vcon = vcanvas.getContext("2d");
+	vimg1 = document.getElementById("img1");
+	vimg2 = document.getElementById("img2");
+	vimg3 = document.getElementById("img3");
+	
+	vcon.drawImage(vimg1,0,0,714,366);//(srcimage,0,0,width,height)
+	vcon.drawImage(vimg2,imgx,imgy,200,244,450,80,200,244);//(srcimage,src x,src y,src width,src height,loc on canvas x ,loc on canvas y,new img width,new img height)
+	vcon.drawImage(vimg3,imgx,imgy,200,244,250,120,200,244);//(srcimage,src x,src y,src width,src height,loc on canvas x ,loc on canvas y,new img width,new img height)
+
+	setInterval("animate()",500);//milisecond per frame
+	Ready();
+	pageScroll()
+}
+
+
+var counter=0;
+function animate(){
+	counter++; 
+	//cx-= 10;//move from left and right - and +
+	//cy=0;//move from up and down - and +
+	if (counter > 5) counter=0;
+	//if (cx < 500) cx=700;
+	imgx = counter*200;
+	
+	
+	vcon.drawImage(vimg1,0,0,714,366);//(srcimage,0,0,width,height)
+	vcon.drawImage(vimg2,imgx,imgy,200,244,450,80,200,244);;//(srcimage,src x,src y,src width,src height,loc on canvas x ,loc on canvas y,new img width,new img height)
+	vcon.drawImage(vimg3,imgx,imgy,200,244,250,120,200,244);;
+}
+
+//AutoScrolling
+
+
+var speed = 0;
+var currPos = 0;
+var newPos = 1;
+var scroller = "";	
+var scrollTimer = "";
+var pause = false;
+
+function startScroll(){//2nd step
+
+//	clearTimeout(scrollTimer); //need in delaying scroll
+	if (newPos > currPos && !pause)//if 
+		{
+		 currPos = scroller.scrollTop;
+		 speed = speed + 1; //how fast
+		 scroller.scrollTop = speed;
+		 newPos = scroller.scrollTop;
+		 setTimeout('startScroll()', 20);       
+		}
+	
+}
+
+function Ready(){ //1st step
+	
+	scroller = document.getElementById('scrollBox');
+	scroller.scrollTop = 0;
+	
+	scrollTimer = setTimeout('startScroll()', 26000);   //  2 seconds before the start;		
+	
+}
+function Resume(){
+	pause = false;
+	startScroll();
+}
+function Pause(){
+	pause = true;
+}
+
+y=0;
+function pageScroll() {
+	
+	y++;
+	window.scroll(0,y); // horizontal and vertical scroll increments
+	scrolldelay = setTimeout('pageScroll()',30); // scrolls every 100 milliseconds
+	
+	
+	if (y > 160){
+		clearTimeout(scrolldelay);
+		y = 0;
+	}
+}
+
+</script>
+
+
+<style> 
+body
+{
+background:url("../images/officebg.jpg");
+background-size:100% 100%;
+background-repeat:no-repeat;
+padding-top:0px;
+}
+</style>
+
+</head>
+<body onload="loadImage()" background="../images/officebg.jpg">
+<center>
+<h1 style="color: #FFFFFF;">Employee Of The Month</h1>
+<h2 style="color: #FFFFFF;">Chapter 1: The Guest</h2>  
+<h3 style="color: #FFFFFF;">Scene 4: Introduction</h3>
+
+
+<canvas style="border-width: 10px;border-style: ridge;" id="canvas1" 
+width = "714" height = "366">This browser does not support this item</canvas>
+<br>
+
+<div id="scrollBox" class="scroll" style="width:500px; height:160px; overflow:auto; color: #FFFFFF;">
+Everyone stopped except for that woman in the farthest seat just looking at her computer monitor like she heard nothing.
+Everyone in the department froze just like the women in the reception and stopped at what they're doing and looked at Daniel.
+<br>
+Employee: There... There must have some kind of mistake... This can not be. 
+A man suddenly enters the department and speaks
+<br>
+Man: Unfortunately it is the truth, he is another intern accepted in. We have no choice. Come with me Mr. Daniel.
+<br>
+Lucas: I am Lucas, the Developers department manager. I welcome you to Capstone. If you have any question just ask me.
+<br>
+Daniel: Where should I start? First, what is this unfortunately stuffs... 
+Do I really look like someone who can not do something? 
+And what is with everyone... They are weird. 
+<br>
+Lucas: That is just how we greet interns here. -laughs- do not mind it. Just do your job. 
+Lucas replied with a serious look.
+
+</div>
+<input type="button" onClick="Resume()" value="Resume Scroll">
+<input type="button" onClick="Pause()" value="Pause Scroll">
+<br>
+<img id = "img1" alt="Office" src="./images/scene2.JPG" width=1 height=1>
+<img id = "img2" alt="Daniel" src="./images/dan2_transparent.png" style="display: none">
+<img id = "img3" alt="Lucas" src="./images/lucas_transparent.png" style="display: none">
+
+<br>
+<img onmouseover="src='./button/prev/eden_pre.png'" onmouseout="src='./button/prev/eden_nor.png'" onclick="location.href='./chapter1scene3.html'"
+src="./button/prev/eden_beg.png" alt="Previous" width="140" height="240">
+
+<img onmouseover="src='./button/next/megan_nexc.png'" onmouseout="src='./button/next/megan_nor.png'" onclick="location.href='../chapters.html'"
+src="./button/next/megan_beg.png" alt="Next!" width="200" height="230">
+</center>
+<audio controls autoplay>
+  <source src="./audio/scene04.mp3">
+  This browser does not support this player.
+</audio> 
+</body>
+</html>

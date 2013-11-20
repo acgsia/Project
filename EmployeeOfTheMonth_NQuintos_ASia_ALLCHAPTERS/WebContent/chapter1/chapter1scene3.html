@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Of The Month</title>
+
+<script type="text/javascript">
+var vcanvas, vimg1, vimg2, vcon;
+var imgx = 0, imgy = 0;
+function loadImage(){
+	vcanvas = document.getElementById("canvas1");
+	vcon = vcanvas.getContext("2d");
+	vimg1 = document.getElementById("img1");
+	vimg2 = document.getElementById("img2");
+	
+	vcon.drawImage(vimg1,0,0,714,366);//(srcimage,0,0,width,height)
+	vcon.drawImage(vimg2,imgx,imgy,200,244,700,100,200,244);
+	//(srcimage,src x,src y,src width,src height,loc on canvas x ,loc on canvas y,new img width,new img height)
+
+	setInterval("animate()",150);//milisecond per frame
+	Ready();
+	pageScroll()
+}
+
+
+var counter=0, cx=700, cy=100;
+function animate(){
+	counter++; 
+	cx-= 10;//move from left and right - and +
+	//cy-=2;//move from up and down - and +
+	if (counter > 3) counter=0;
+	if (cx < 500) {
+		cx=500;
+		counter = 0
+	}
+	//if (cy < 60) cy=100;
+	imgx = counter*200;
+	vcon.drawImage(vimg1,0,0,714,366);//(srcimage,0,0,width,height)
+	vcon.drawImage(vimg2,imgx,imgy,200,244,cx,cy,200,244);;//(srcimage,src x,src y,src width,src height,loc on canvas x ,loc on canvas y,new img width,new img height)
+}
+	
+	//AutoScrolling
+	
+
+	var speed = 0;
+	var currPos = 0;
+	var newPos = 1;
+	var scroller = "";	
+	var scrollTimer = "";
+	var pause = false;
+
+	function startScroll(){//2nd step
+
+//		clearTimeout(scrollTimer); //need in delaying scroll
+		if (newPos > currPos && !pause)//if 
+			{
+			 currPos = scroller.scrollTop;
+			 speed = speed + 1; //how fast
+			 scroller.scrollTop = speed;
+			 newPos = scroller.scrollTop;
+			 setTimeout('startScroll()', 20);       
+			}
+	}
+
+	function Ready(){ //1st step
+		
+		scroller = document.getElementById('scrollBox');
+		scroller.scrollTop = 0;
+		
+		scrollTimer = setTimeout('startScroll()', 8000);   //  2 seconds before the start;		
+		
+	}
+	function Resume(){
+		pause = false;
+		startScroll();
+	}
+	function Pause(){
+		pause = true;
+	}
+
+// new
+var y = 0;
+function pageScroll() {
+	
+	y++;
+	window.scroll(0,y); // horizontal and vertical scroll increments
+	scrolldelay = setTimeout('pageScroll()',30); // (important)scrolls every 100 milliseconds 
+	
+	
+	if (y > 160){// < --  win.pageY kung anung maxumum Y axis ng windows mo.
+		clearTimeout(scrolldelay);
+		y = 0;
+	}
+}
+</script>
+
+
+<style> 
+body
+{
+background:url("../images/officebg.jpg");
+background-size:100% 100%;
+background-repeat:no-repeat;
+padding-top:0px;
+}
+</style>
+
+</head>
+<body onload="loadImage()" background="../images/officebg.jpg">
+
+<center>
+<h1 style="color: #FFFFFF;">Employee Of The Month</h1>
+<h2 style="color: #FFFFFF;">Chapter 1: The Guest</h2>  
+<h3 style="color: #FFFFFF;">Scene 3: The Department</h3>
+
+
+<canvas style="border-width: 10px;border-style: ridge;" id="canvas1" 
+width = "714" height = "366">This browser does not support this item</canvas>
+
+
+
+<div id="scrollBox" class="scroll" style="width:300px; height:80px; overflow:auto; color: #FFFFFF;">
+...After reaching his destination, he looked around the department and saw a number of people sited, 
+<br>busy and doing their work. Daniel knocks at the near wood and greets them.
+<br>
+<br>
+Daniel: Excuse me, is this the Developers Department? I am Daniel the new intern.
+
+</div>
+<input type="button" onClick="Resume()" value="Resume Scroll">
+<input type="button" onClick="Pause()" value="Pause Scroll">
+
+<br>
+<img id = "img1" alt="Office" src="./images/scene1.JPG" style="display: none">
+<img id = "img2" alt="Daniel" src="./images/dan1_transparent.png" style="display: none">
+<br>
+<img onmouseover="src='./button/prev/oliver_slim_pre.png'" onmouseout="src='./button/prev/oliver_slim_nor.png'" onclick="location.href='./chapter1scene2.html'"
+src="./button/prev/oliver_slim_beg.png" alt="Previous" width="180" height="240">
+
+<img onmouseover="src='./button/next/lucas_nex.png'" onmouseout="src='./button/next/lucas_nor.png'" onclick="location.href='./chapter1scene4.html'"
+src="./button/next/lucas_beg.png" alt="Next!" width="160" height="240">
+</center>
+<audio controls autoplay>
+  <source src="./audio/scene03.mp3">
+  This browser does not support this player.
+</audio> 
+</body>
+</html>

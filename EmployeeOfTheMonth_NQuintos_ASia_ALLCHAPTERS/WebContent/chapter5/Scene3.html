@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Link External CSS -->
+	<link rel="stylesheet" type="text/css" href="./style_scenes.css">
+<meta charset="ISO-8859-1">
+<title>Employee of the Month</title>
+
+<!-- Script -->
+<script type="text/javascript">
+var vCanvas, vContext, vBackground01, vBackground02, vBackground03, vBackground04;
+var imgPosXCan = 0, imgPosX = 0, imgPosY = 0; // image positions
+
+function loadScene() {
+	vCanvas = document.getElementById("sceneCanvas");
+	vContext = vCanvas.getContext("2d");
+	vBackground01 = document.getElementById("bg01");
+	vBackground02 = document.getElementById("bg02");
+	vBackground03 = document.getElementById("bg03");
+	vBackground04 = document.getElementById("bg04");
+	
+	// start loading image background
+	vContext.drawImage(vBackground01, 0, 0);
+	
+	// call to animate the images
+	setInterval("animateCanvas()", 600);
+}
+
+var countCanvas = 0, changePicCounter = 0;
+
+function animateCanvas() {
+	
+	if (countCanvas >= 0 && countCanvas <= 2) {
+		countCanvas++;
+		changePicCounter++;
+		imgPosXCan = changePicCounter * 600;
+		// start loading image background 1
+		vContext.drawImage(vBackground01, imgPosXCan, 0, 600, 330, 0, 0, 600, 330);
+		if (countCanvas == 2) {
+			changePicCounter = -1;
+		}
+	}
+	
+	if (countCanvas >= 2 && countCanvas <= 8) {
+		countCanvas++;
+		changePicCounter++;
+		imgPosXCan = changePicCounter * 600;
+		// start loading image background 2
+		vContext.drawImage(vBackground02, imgPosXCan, 0, 600, 330, 0, 0, 600, 330);
+		// No black screen solution
+		if (countCanvas == 9) {
+			changePicCounter = -1;
+		}
+	}
+	
+	if (countCanvas >= 9 && countCanvas <= 12) {
+		countCanvas++;
+		changePicCounter++;
+		imgPosXCan = changePicCounter * 600;
+		// start loading image background 2
+		vContext.drawImage(vBackground03, imgPosXCan, 0, 600, 330, 0, 0, 600, 330);
+		// No black screen solution
+		if (countCanvas == 12) {
+			changePicCounter = -1;
+		}
+	}
+	
+	if (countCanvas >= 12 && countCanvas <= 15) {
+		countCanvas++;
+		changePicCounter++;
+		imgPosXCan = changePicCounter * 600;
+		// start loading image background 2
+		vContext.drawImage(vBackground04, imgPosXCan, 0, 600, 330, 0, 0, 600, 330);
+		// No black screen solution
+		if (countCanvas == 16) {
+			changePicCounter = 0;
+			countCanvas = 0;
+			vContext.drawImage(vBackground01, 0, 0);
+		}
+	}
+	
+}
+
+</script>
+
+</head>
+<body onload="loadScene()" background="./images/officebg.jpg">
+
+<h1>Employee of the Month</h1>
+<h2>Chapter 5 - And the Employee-of-the-Month is...</h2>
+<h3>Scene 03: Virus and Chaos</h3>
+<center>
+<canvas id="sceneCanvas" width="600" height="330" style="border-width: 8px; border-style: inset;">Canvas not Supported!</canvas>
+
+<br>
+	<div style="width: 400px; height: 150px; line-height: 3em; overflow: auto; padding: 5px; text-align: center;">
+		<p>
+		"The audio file... The audio file is being sent to every contact in the company by the virus. Stop it Daniel!" shouts Eliot.
+		The audio file was sent and heard by every employee on the company and chaos bursts throughout the company.
+		Everyone is trying to kill each other, trying to find out who is the Employee-of-the-Month.
+		</p>
+	</div>
+
+	<img onmouseover="src='./button/prev/oliver_slim_pre.png'" onmouseout="src='./button/prev/oliver_slim_nor.png'" onclick="location.href='./Scene2.html'"
+src="./button/prev/oliver_slim_beg.png" alt="Previous" width="180" height="240">
+
+<img onmouseover="src='./button/next/lucas_nex.png'" onmouseout="src='./button/next/lucas_nor.png'" onclick="location.href='./Scene4.html'"
+src="./button/next/lucas_beg.png" alt="Next!" width="160" height="240">
+<br>
+</center>
+</body>
+
+	<!-- Sounds -->
+	<audio controls autoplay>
+		<source src="./audio/scene03.mp3" type="audio/mpeg">
+		Your browser does not support the audio element.
+		</source>
+	</audio>
+	
+	<!-- Images -->
+	<img id="bg01" src="./images/chap3scene5_05_frame.png" style="display: none;">
+	<img id="bg02" src="./images/chap3scene5_06_frame.png" style="display: none;">
+	<img id="bg03" src="./images/chap3scene5_07_frame.png" style="display: none;">
+	<img id="bg04" src="./images/chap3scene5_08_frame.png" style="display: none;">
+
+</html>

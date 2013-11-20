@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Link External CSS -->
+<link rel="stylesheet" type="text/css" href="./style_scenes.css">
+<meta charset="ISO-8859-1">
+<title>Employee of the Month</title>
+
+<!-- Script -->
+<script type="text/javascript">
+var vCanvas, vContext, vBackground01, vBackground02, vBackground03, vBackground04;
+var imgPosX = 0, imgPosY = 0; // image positions
+
+function loadScene() {
+	// alert("Test Function. OK.");
+	vCanvas = document.getElementById("sceneCanvas");
+	vContext = vCanvas.getContext("2d");
+	vBackground01 = document.getElementById("bg01");
+	vBackground02 = document.getElementById("bg02");
+	vBackground03 = document.getElementById("bg03");
+	vBackground04 = document.getElementById("bg04");
+	
+	// start loading image background
+	vContext.drawImage(vBackground01, 0, 0);
+	// call to animate the image
+	stop = setInterval("animate()", 800);
+}
+
+var counter = 0, changePicCounter = 0;
+
+function animate() {
+	
+	if (counter >= 0 && counter <= 3) {
+		counter++;
+		changePicCounter++;
+		imgPosX = changePicCounter * 600;
+		// start loading image background 1
+		vContext.drawImage(vBackground01, imgPosX, 0, 600, 330, 0, 0, 600, 330);
+		if (counter == 3) {
+			changePicCounter = -1;
+		}
+	}
+	
+	if (counter >= 3 && counter <= 13) {
+		counter++;
+		changePicCounter++;
+		imgPosX = changePicCounter * 600;
+		// start loading image background 2
+		vContext.drawImage(vBackground02, imgPosX, 0, 600, 330, 0, 0, 600, 330);
+		if (counter == 13) {
+			changePicCounter = -1;
+		}
+	}
+	
+	if (counter >= 13 && counter <= 17) {
+		counter++;
+		changePicCounter++;
+		imgPosX = changePicCounter * 600;
+		// start loading image background 2
+		vContext.drawImage(vBackground03, imgPosX, 0, 600, 330, 0, 0, 600, 330);
+		if (counter == 17) {
+			changePicCounter = -1;
+		}
+	}
+	
+	if (counter >= 17 && counter <=22) {
+		counter++;
+		changePicCounter++;
+		imgPosX = changePicCounter * 600;
+		// start loading image background 2
+		vContext.drawImage(vBackground04, imgPosX, 0, 600, 330, 0, 0, 600, 330);
+		if (counter == 22) {
+			changePicCounter = -1;
+			counter = 0;
+		}
+	}
+}
+</script>
+
+</head>
+<body onload="loadScene()" background="../images/officebg.jpg">
+
+<h1>Employee of the Month</h1>
+<h2>Chapter 3 - Past connects Present</h2>
+<h3>Scene 03: Signs</h3>
+
+<center>
+<canvas id="sceneCanvas" width="600" height="330" style="border-width: 8px; border-style: inset;">Canvas not supported!</canvas>
+<br>
+<div style="width: 550px; height: 200px; line-height: 3em; overflow: auto; padding: 5px; text-align: center;">
+<p>"An extra cubicle. Even though the employee list 
+of a department is counted correctly there will 
+always be an extra cubicle. As every employee gets 
+their own cubicle you will see one cubicle empty 
+and for no one's use. It is a sign that Eden has 
+come back and assumed that he is part of the 
+department. Days will past and the first death 
+will occur... Just like what happened to Christine a 
+week ago." Tells Lucas.
+
+"That can't be true! That is just superstition! 
+You have no way of telling..."
+
+"It is always like that, the whole company knows 
+that if there is an extra cubicle there will be 
+death. But don't worry because the company has 
+found a solution to stop the chain of death. But 
+it is something that should kept because it is 
+unethical." Lucas continues.
+
+"What is it? I need to know the solution or I'll 
+lose my mind. I can't quit on the company, there 
+is a contract and I have to know what this 
+phenomenon is really." Daniel interrupts.</p> 
+</div>
+
+<img onmouseover="src='./button/prev/oliver_slim_pre.png'" onmouseout="src='./button/prev/oliver_slim_nor.png'" onclick="location.href='./Scene2.html'"
+src="./button/prev/oliver_slim_beg.png" alt="Previous" width="180" height="240">
+
+<img onmouseover="src='./button/next/lucas_nex.png'" onmouseout="src='./button/next/lucas_nor.png'" onclick="location.href='./Scene4.html'"
+src="./button/next/lucas_beg.png" alt="Next!" width="160" height="240">
+
+</center>
+
+</body>
+
+<!-- Background Images -->
+<img id="bg01" src="./images/chap3scene3_01.png" style="display: none;">
+<img id="bg02" src="./images/chap3scene3_02.png" style="display: none;">
+<img id="bg03" src="./images/chap3scene3_03.png" style="display: none;">
+<img id="bg04" src="./images/chap3scene3_04.png" style="display: none;">
+<br>
+
+<center>
+<!-- Sound -->
+<audio controls autoplay>
+  <source src="./audio/scene03.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio> 
+</center>
+
+</html>

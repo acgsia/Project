@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Link External CSS -->
+<link rel="stylesheet" type="text/css" href="./style_scenes.css">
+<meta charset="ISO-8859-1">
+<title>Employee of the Month</title>
+
+<!-- Script -->
+<script type="text/javascript">
+var vCanvas, vContext, vBackground01;
+var imgPosX = 0, imgPosY = 0; // image positions
+
+function loadScene() {
+	// alert("Test Function. OK.");
+	vCanvas = document.getElementById("sceneCanvas");
+	vContext = vCanvas.getContext("2d");
+	vBackground01 = document.getElementById("bg01");
+	
+	// start loading image background
+	vContext.drawImage(vBackground01, 0, 0);
+	// call to animate the image
+	stop = setInterval("animate()", 800);
+}
+
+var counter = 0, changePicCounter = 0;
+
+function animate() {
+	
+	if (counter >= 0 && counter <= 5) {
+		counter++;
+		changePicCounter++;
+		// no black screen solution
+		if (counter == 5) {
+			changePicCounter = 0;
+			counter = 0;
+		}
+		imgPosX = changePicCounter * 600;
+		// start loading image background 1
+		vContext.drawImage(vBackground01, imgPosX, 0, 600, 330, 0, 0, 600, 330);
+	}
+}
+</script>
+
+</head>
+<body onload="loadScene()" background="../images/officebg.jpg">
+
+<h1>Employee of the Month</h1>
+<h2>Chapter 3 - Past connects Present</h2>
+<h3>Scene 04: Nonexistent</h3>
+
+<center>
+<canvas id="sceneCanvas" width="600" height="330" style="border-width: 8px; border-style: inset;">Canvas not supported!</canvas>
+<br>
+<div style="width: 550px; height: 200px; line-height: 3em; overflow: auto; padding: 5px; text-align: center;">
+<p>"Eliot the girl you have approached has the 
+presence of a ghost because she is treated like a 
+ghost. Like she doesn't exist. That is the 
+solution. Every time Eden's spirit comes back 
+there will be a sacrifice. One that will be 
+ignored until 6 months has passed and Eden's 
+spirit leaves the department. One that will be 
+called and labeled as The-Employee-Of-The-Month. 
+Only after that will the department go back to 
+normal."</p> 
+</div>
+
+<img onmouseover="src='./button/prev/eden_pre.png'" onmouseout="src='./button/prev/eden_nor.png'" onclick="location.href='./Scene3.html'"
+src="./button/prev/eden_beg.png" alt="Previous" width="140" height="240">
+
+<img onmouseover="src='./button/next/megan_nexc.png'" onmouseout="src='./button/next/megan_nor.png'" onclick="location.href='../chapters.html'"
+src="./button/next/megan_beg.png" alt="Next!" width="200" height="230">
+
+</center>
+
+</body>
+
+<!-- Background Images -->
+<img id="bg01" src="./images/chap3scene4_01.png" style="display: none;">
+<br>
+
+<center>
+<!-- Sound -->
+<audio controls autoplay>
+  <source src="./audio/scene04.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio> 
+</center>
+
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Link External CSS -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+<meta charset="ISO-8859-1">
+<title>Employee Of The Month</title>
+
+<!-- Script -->
+<script type="text/javascript">
+var vCanvas, vContext, vBackground01, vBackground02, vBackground03, vBackground04, vBackground05, vBackground06,
+vBackground07, vBackground08, vBackground09, vBackground10, vBackground11, vBackground12, vBackground13,
+vBackground14, vBackground15, vBackground16, vBackground17, vBackground18, vBackground19, vBackground20;
+
+function loadIntro() {
+	// alert("test intro");
+	vCanvas = document.getElementById("introCanvas");
+	vContext = vCanvas.getContext("2d");
+	vBackground01 = document.getElementById("bg01");
+	vBackground02 = document.getElementById("bg02-1");
+	vBackground03 = document.getElementById("bg02-2");
+	vBackground04 = document.getElementById("bg02-3");
+	vBackground05 = document.getElementById("bg02-4");
+	vBackground06 = document.getElementById("bg02-5");
+	vBackground07 = document.getElementById("bg03-1");
+	vBackground08 = document.getElementById("bg03-2");
+	vBackground09 = document.getElementById("bg03-3");
+	vBackground10 = document.getElementById("bg03-4");
+	vBackground11 = document.getElementById("bg04-1");
+	vBackground12 = document.getElementById("bg04-2");
+	vBackground13 = document.getElementById("bg05-1");
+	vBackground14 = document.getElementById("bg05-2");
+	vBackground15 = document.getElementById("bg05-3");
+	vBackground16 = document.getElementById("bg06-1");
+	vBackground17 = document.getElementById("bg06-2");
+	vBackground18 = document.getElementById("bg06-3");
+	vBackground19 = document.getElementById("bg06-4");
+	vBackground20 = document.getElementById("bg07");
+	
+	// start loading image background 1
+	vContext.drawImage(vBackground01, 0, 0);
+	// call to animate the image
+	setInterval("animate()", 500);
+}
+
+var counter = 0;
+
+function animate() {
+	
+	if (counter >= 0 && counter <= 1) {
+		counter++;
+		// start loading image background 1
+		vContext.drawImage(vBackground01, 0, 0);
+	}
+	else if (counter == 2) {
+		counter++;
+		// start loading image background 2
+		vContext.drawImage(vBackground02, 0, 0);
+	}
+	else if (counter == 3) {
+		counter++;
+		// start loading image background 3
+		vContext.drawImage(vBackground03, 0, 0);
+	}
+	else if (counter == 4) {
+		counter++;
+		// start loading image background 4
+		vContext.drawImage(vBackground04, 0, 0);
+	}
+	else if (counter == 5) {
+		counter++;
+		// start loading image background 5
+		vContext.drawImage(vBackground05, 0, 0);
+	}
+	else if (counter == 6) {
+		counter++;
+		// start loading image background 6
+		vContext.drawImage(vBackground06, 0, 0);
+	}
+	else if (counter == 7) {
+		counter++;
+		// start loading image background 7
+		vContext.drawImage(vBackground07, 0, 0);
+	}
+	else if (counter == 8) {
+		counter++;
+		vContext.drawImage(vBackground08, 0, 0);
+	}
+	else if (counter == 9) {
+		counter++;
+		vContext.drawImage(vBackground09, 0, 0);
+	}
+	else if (counter == 10) {
+		counter++;
+		vContext.drawImage(vBackground10, 0, 0);
+	}
+	else if (counter == 11) {
+		counter++;
+		vContext.drawImage(vBackground11, 0, 0);
+	}
+	else if (counter == 12) {
+		counter++;
+		vContext.drawImage(vBackground12, 0, 0);
+	}
+	else if (counter == 13) {
+		counter++;
+		// start loading image background 13
+		vContext.drawImage(vBackground13, 0, 0);
+	}
+	else if (counter == 14) {
+		counter++;
+		// start loading image background 14
+		vContext.drawImage(vBackground14, 0, 0);
+	}
+	else if (counter == 15) {
+		counter++;
+		// start loading image background 15
+		vContext.drawImage(vBackground15, 0, 0);
+	}
+	else if (counter == 16) {
+		counter++;
+		vContext.drawImage(vBackground16, 0, 0);
+	}
+	else if (counter == 17) {
+		counter++;
+		vContext.drawImage(vBackground17, 0, 0);
+	}
+	else if (counter == 18) {
+		counter++;
+		vContext.drawImage(vBackground18, 0, 0);
+	}
+	else if (counter == 19) {
+		counter++;
+		vContext.drawImage(vBackground19, 0, 0);
+	}
+	else if (counter == 20) {
+		// stop the counter and reset it
+		counter = 0;
+		vContext.drawImage(vBackground20, 0, 0);
+	}
+	
+}
+
+</script>
+
+</head>
+<body onload="loadIntro()" style="height: 648px;">
+
+	<h1>Welcome, Employee of the Month!</h1>
+	<h3>-a scary story yet to be a game-</h3>
+	
+	<hr>
+	<h2><a href="index.html">Home - Intro</a></h2>
+	<h2><a href="chapters.html">Chapters</a></h2>
+	<h2><a href="characters.html">Characters</a></h2>
+	<h2><a href="about.html">About E.O.T.M.</a></h2>
+	<hr>
+	
+	<h3>Introduction to the Story</h3>
+
+	<center>
+		<canvas id="introCanvas" width="604" height="335" style="border-width: 7px; border-style: inset;">
+		Canvas not Supported!
+		</canvas>
+	</center>
+
+</body>
+<br>
+	<!-- Background Images -->
+	<img id="bg01" src="images/intro_bg01.png" style="display: none;">
+	<img id="bg02-1" src="images/intro_bg02-1.png" style="display: none;">
+	<img id="bg02-2" src="images/intro_bg02-2.png" style="display: none;">
+	<img id="bg02-3" src="images/intro_bg02-3.png" style="display: none;">
+	<img id="bg02-4" src="images/intro_bg02-4.png" style="display: none;">
+	<img id="bg02-5" src="images/intro_bg02-5.png" style="display: none;">
+	<img id="bg03-1" src="images/intro_bg03-1.png" style="display: none;">
+	<img id="bg03-2" src="images/intro_bg03-2.png" style="display: none;">
+	<img id="bg03-3" src="images/intro_bg03-3.png" style="display: none;">
+	<img id="bg03-4" src="images/intro_bg03-4.png" style="display: none;">
+	<img id="bg04-1" src="images/intro_bg04-1.png" style="display: none;">
+	<img id="bg04-2" src="images/intro_bg04-2.png" style="display: none;">
+	<img id="bg05-1" src="images/intro_bg05-1.png" style="display: none;">
+	<img id="bg05-2" src="images/intro_bg05-2.png" style="display: none;">
+	<img id="bg05-3" src="images/intro_bg05-3.png" style="display: none;">
+	<img id="bg06-1" src="images/intro_bg06-1.png" style="display: none;">
+	<img id="bg06-2" src="images/intro_bg06-2.png" style="display: none;">
+	<img id="bg06-3" src="images/intro_bg06-3.png" style="display: none;">
+	<img id="bg06-4" src="images/intro_bg06-4.png" style="display: none;">
+	<img id="bg07" src="images/intro_bg07.png" style="display: none;">
+	
+	<center>
+	<!-- Narrative Audio -->
+	<audio controls autoplay>
+		<source src="audio/intro.mp3" type="audio/mpeg">
+		Your browser does not support the audio element.
+	</audio>
+	</center>
+	
+	<!-- BG Audio -->
+	<audio autoplay loop>
+		<source src="audio/bgmusic_01.mp3" type="audio/mpeg">
+		Your browser does not support the audio element.
+	</audio>
+	
+	
+</html>
